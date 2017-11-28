@@ -1,0 +1,24 @@
+{
+  "name": "lambda-move-file",
+  "version": "1.0.0",
+  "description": "Move S3 file file",
+  "main": "index.js",
+  "files": [
+    "*.js"
+  ],
+  "scripts": {
+    "create": "claudia create --region us-west-2 --timeout 60 --handler index.handler --no-optional-dependencies --policies policies/*.json",
+    "add-s3": "claudia add-s3-event-source --bucket table46hackathondata-athena --suffix csv",
+    "update": "claudia update --no-optional-dependencies",
+    "test-lambda": "claudia test-lambda --event sample-s3-event.json",
+    "test": "sam local invoke --event sample-s3-event.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "optionalDependencies": {
+    "aws-sdk": "^2.157.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
